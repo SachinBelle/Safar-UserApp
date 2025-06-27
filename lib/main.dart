@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:safar/pages/loginPages/initialPage.dart';
+
 import 'package:safar/pages/splashScreen.dart';
-import 'package:safar/pages/walkthroughScreens/WalkThroughScreen.dart';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async { 
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context)=>Splashscreen(),
-        '/initialPage':(context)=>Initialpage(),
+     
       
       },
     );
