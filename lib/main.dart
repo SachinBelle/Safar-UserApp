@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:safar/pages/loginPages/initialPage.dart';
 import 'package:safar/pages/splashScreen.dart';
+import 'package:safar/pages/walkthroughScreens/WalkThroughScreen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async { 
@@ -29,15 +31,25 @@ class MyApp extends StatelessWidget {
       title: 'Safar',
       theme: ThemeData(
          brightness: Brightness.light,
-        primaryColor: const Color(0xFFF5D54F),
-        scaffoldBackgroundColor: Colors.white,
+        colorScheme:ColorScheme.fromSeed(
+          seedColor: const Color(0xFF1D3557),
+          primary: const Color(0xFF1D3557),
+          secondary: const Color(0xFFF4A261),
+        ) ,
       
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          
+        )
+
+        
       
       ),
       initialRoute: '/',
       routes: {
         '/':(context)=>Splashscreen(),
         '/initialPage':(context)=>Initialpage(),
+      
       },
     );
   }
