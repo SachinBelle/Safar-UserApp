@@ -15,10 +15,10 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Walkthroughscreen(screenNo: 1, subTitle: "Know exactly where your child's bus/van is — live on the map.", title: "Real-Time Bus/Van Tracking")));// Change to your next route
+    Future.delayed(const Duration(seconds: 2), () {
+     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Walkthroughscreen()));// Change to your next route
     });
-       Future.delayed(const Duration(seconds: 2), () {
+       Future.delayed(const Duration(seconds: 1), () {
     setState(() {
       _onTransition = true;
     });

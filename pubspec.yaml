@@ -38,10 +38,9 @@ dependencies:
  
   flutter_svg: ^2.2.0
   google_fonts: ^6.2.1
-<<<<<<< HEAD
-  smooth_page_indicator: ^1.2.1
-=======
->>>>>>> afc4ad6f8e56c2f95b9c05b35203354c0e7246ee
+  smooth_page_indicator:
+  firebase_core: ^3.14.0
+  
 
 dev_dependencies:
   flutter_test:
