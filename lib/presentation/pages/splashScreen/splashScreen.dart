@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:safar/pages/walkthroughScreens/WalkThroughScreen.dart';
+import 'package:safar/presentation/pages/walkthroughScreens/WalkThroughScreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -11,16 +11,24 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-   bool _onTransition=false;
+   bool _onTransition1=false;
+   bool _onTransition2=false;
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(milliseconds: 2000), () {
      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Walkthroughscreen()));// Change to your next route
     });
-       Future.delayed(const Duration(seconds: 1), () {
+       Future.delayed(const Duration(milliseconds:500), () {
     setState(() {
-      _onTransition = true;
+      _onTransition1 = true;
+    });
+  });
+  Future.delayed(const Duration(milliseconds: 1500),(){
+
+    setState(() {
+      _onTransition2=true;
+
     });
   });
   }
@@ -31,7 +39,7 @@ class _SplashscreenState extends State<Splashscreen> {
    
    
     return Scaffold(
-      backgroundColor:_onTransition?Color(0xFF1D3557):Colors.white,
+      backgroundColor:Color(0xFF1D3557),
       body: Column(
         spacing: 0,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -39,10 +47,10 @@ class _SplashscreenState extends State<Splashscreen> {
         children: [
           const Spacer(),
 
-          Center(
-            child:_onTransition?SvgPicture.asset("assets/logo/Splash_screen_white_title.svg") :SvgPicture.asset("assets/logo/splash_screen_blue_title.svg")
-          ),
-          Text.rich(
+        _onTransition1?  Center(
+            child:SvgPicture.asset("assets/logo/Splash_screen_white_title.svg"),
+          ):Container(),
+         _onTransition2? Text.rich(
             TextSpan(children:[
               TextSpan(
                 text: "Mark ",
@@ -57,7 +65,7 @@ class _SplashscreenState extends State<Splashscreen> {
                 text: "it. ",
                  style: GoogleFonts.inter(
                   fontStyle: FontStyle.italic,
-                  color: _onTransition?Colors.white:Color(0xFF1D3557),
+                  color:Colors.white,
                   fontSize: 14,
                   ),
 
@@ -75,7 +83,7 @@ class _SplashscreenState extends State<Splashscreen> {
                 text: "it. ",
                  style: GoogleFonts.inter(
                   fontStyle: FontStyle.italic,
-                  color: _onTransition?Colors.white:Color(0xFF1D3557),
+                  color: Colors.white,
                   fontSize: 14,
                   ),
 
@@ -93,7 +101,7 @@ class _SplashscreenState extends State<Splashscreen> {
                 text: "it. ",
                  style: GoogleFonts.inter(
                   fontStyle: FontStyle.italic,
-                  color: _onTransition?Colors.white:Color(0xFF1D3557),
+                  color: Colors.white,
                   fontSize: 14,
                   ),
 
@@ -101,7 +109,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
 
             ])
-          ),
+          ):Container(),
           const Spacer(flex: 2,),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safar/constents/app_theme/text_theme/text_theme.dart';
+import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
 import 'main_button_theme.dart'; // For the color constant
 
 class AddBusButton extends StatelessWidget {

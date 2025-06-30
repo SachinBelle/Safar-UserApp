@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safar/constents/app_theme/text_theme/text_theme.dart';
+import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
 
 class CustomNavBar extends StatefulWidget {
   final int initialIndex;

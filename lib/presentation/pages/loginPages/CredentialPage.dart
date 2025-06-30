@@ -11,6 +11,8 @@ class CredentialPage extends StatefulWidget {
 class _CredentialPageState extends State<CredentialPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      
+    );
   }
 }

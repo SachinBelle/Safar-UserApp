@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:safar/pages/loginPages/CredentialPage.dart';
+import 'package:safar/presentation/pages/loginPages/CredentialPage.dart';
+import 'package:safar/presentation/pages/splashScreen/splashScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Walkthroughscreen extends StatefulWidget {
@@ -18,11 +20,20 @@ class _WalkthroughscreenState extends State<Walkthroughscreen> {
     int _currentPageIndex=0;
 
     @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  
+    
+  }
+
+    @override
   void dispose() {
     // TODO: implement dispose
     _pageController.dispose();
     super.dispose();
   }
+
 
   void _onSkipPressed(){
     _navigateToLogin();
@@ -41,18 +52,25 @@ class _WalkthroughscreenState extends State<Walkthroughscreen> {
   }
 
     final List<String> titles=[
-      "Real-Time Bus/Van Tracking",
+      "Real-Time School Bus Tracking",
       "Instant Alerts, Always Informed",
-      "Add All Your Rides"
+      "One Account, Multiple Tracking"
     ];
 
     final List<String> descriptions=[
-      "Know exactly where your child's bus/van is — live on the map.",
-      "Get notified when the driver comes online or reaches school.",
+      "Know exactly where your school bus is  \nlive on the map.",
+      "Get notified when the driver comes near your stop or reaches school.",
       "Track multiple buses easily from one account."
     ];
 
-    final List<String> topSvgs=[];
+    final List<String> topSvgs=[
+      "assets/walkthroughScreens/first_wts.svg",
+      "assets/walkthroughScreens/Second_wts.svg",
+      "assets/walkthroughScreens/third_wts.svg"
+
+
+
+    ];
 
 
   
@@ -72,6 +90,7 @@ class _WalkthroughscreenState extends State<Walkthroughscreen> {
       body: PageView(
         controller: _pageController,
         onPageChanged: (index){
+          
           setState(() {
             
             _currentPageIndex=index;
@@ -127,7 +146,13 @@ class _WalkthroughscreenState extends State<Walkthroughscreen> {
                               ),),
                       )
                     ],
-                  )
+                  ),
+                  const Spacer(),
+                  SvgPicture.asset(
+                   topSvgs[index],
+                   ),
+                  
+                  const Spacer(),
                 ],
               ),
             ),
@@ -165,16 +190,20 @@ class _WalkthroughscreenState extends State<Walkthroughscreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
        children: [
-                AnimatedSmoothIndicator(
-                  activeIndex: _currentPageIndex,
-                  count: 3,
-                  effect: ExpandingDotsEffect(
-                    dotColor: Color.fromARGB(149, 244, 163, 97),
-                    activeDotColor: ColorScheme.secondary,
-                    expansionFactor: 1.5,
-                    radius: 8,
-                  ),
-                  ),
+              AnimatedSmoothIndicator(
+  activeIndex: _currentPageIndex,
+  count: 3,
+  effect: ExpandingDotsEffect(
+    dotColor: const Color.fromARGB(149, 244, 163, 97), // light peach
+    activeDotColor: const Color(0xFFF4A361), // darker orange for active
+    expansionFactor: 2, // makes the active dot stretch out like a pill
+    dotHeight: 12,
+    dotWidth: 12,
+    spacing: 5,
+    radius: 8, // rounded enough to make the active dot pill-shaped
+  ),
+),
+
             _currentPageIndex!=2?  GestureDetector(
                 onTap: (){
                  _onNextPressed();
