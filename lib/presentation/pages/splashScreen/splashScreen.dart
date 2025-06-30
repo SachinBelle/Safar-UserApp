@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:safar/pages/walkthroughScreens/WalkThroughScreen.dart';
+import 'package:safar/presentation/pages/walkthroughScreens/WalkThroughScreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -16,6 +16,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
+     // ignore: use_build_context_synchronously
      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Walkthroughscreen()));// Change to your next route
     });
        Future.delayed(const Duration(seconds: 1), () {

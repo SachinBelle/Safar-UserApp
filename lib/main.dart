@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safar/presentation/pages/splashScreen/splashScreen.dart';
 
-import 'package:safar/pages/splashScreen.dart';
+// import 'package:safar/pages/splashScreen.dart';
 
 
 void main() async { 

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:safar/constents/app_theme/button_theme/main_button_theme.dart';
+import 'package:safar/constants/app_theme/button_theme/main_button_theme.dart';
 // import 'button_theme.dart';
 
 class ResponsiveButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final bool outlined;
+  final double? height;
 
   const ResponsiveButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.outlined = false,
+    this.height,
   });
 
   @override
@@ -22,19 +24,19 @@ class ResponsiveButton extends StatelessWidget {
 
     // You can adjust these ratios as needed for your design
     final buttonWidth = screenWidth * 0.9; // 90% of screen width
-    final buttonHeight = screenHeight * 0.06; // 6% of screen height
+    final buttonHeight = height ?? 45.0; // Use provided height or default to 45
 
     return SizedBox(
       width: buttonWidth,
       height: buttonHeight,
       child: outlined
           ? OutlinedButton(
-              style: outlinedButtonStyle,
+              style: outlinedButtonStyle(context),
               onPressed: onPressed,
               child: Text(text, style: const TextStyle(fontSize: 16)),
             )
           : ElevatedButton(
-              style: filledButtonStyle,
+              style: filledButtonStyle(context),
               onPressed: onPressed,
               child: Text(text, style: const TextStyle(fontSize: 16)),
             ),
