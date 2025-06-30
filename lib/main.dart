@@ -2,9 +2,14 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safar/presentation/pages/splashScreen/splashScreen.dart';
 
+<<<<<<< HEAD
 import 'package:safar/presentation/pages/splashScreen/splashScreen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+=======
+// import 'package:safar/pages/splashScreen.dart';
+>>>>>>> c4de96aa7b25f11f2c9dffde450be0863d412618
 
 
 void main() async { 

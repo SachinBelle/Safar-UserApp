@@ -16,7 +16,12 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     Future.delayed(const Duration(milliseconds: 2000), () {
+=======
+    Future.delayed(const Duration(seconds: 2), () {
+     // ignore: use_build_context_synchronously
+>>>>>>> c4de96aa7b25f11f2c9dffde450be0863d412618
      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Walkthroughscreen()));// Change to your next route
     });
        Future.delayed(const Duration(milliseconds:500), () {
