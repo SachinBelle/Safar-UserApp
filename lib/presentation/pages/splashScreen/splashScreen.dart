@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safar/presentation/pages/home%20screen/homescreen_page.dart';
+import 'package:safar/presentation/pages/loginPages/CredentialPage.dart';
 import 'package:safar/presentation/pages/walkthroughScreens/WalkThroughScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -11,31 +14,58 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+
+  bool? isWalkThroughVisted;
+   bool? isLoggedIn;
+
+
+   
+
+
+  void loadPrefsAndNavigate() async {
+
+
+  final prefs = await SharedPreferences.getInstance();
+  isWalkThroughVisted = prefs.getBool("walkThroughVisted") ?? false;
+  isLoggedIn = prefs.getBool("isloggedIn") ?? false;
+
+  // Step 1: Run animations
+  await Future.delayed(const Duration(milliseconds: 500));
+  setState(() {
+    _onTransition1 = true;
+  });
+
+  await Future.delayed(const Duration(milliseconds: 1500));
+  setState(() {
+    _onTransition2 = true;
+  });
+
+  // Optional: Add 200-500ms pause after animation
+  await Future.delayed(const Duration(milliseconds: 500));
+
+  // Step 2: Navigate
+  if (!isWalkThroughVisted!) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => Walkthroughscreen()),
+    );
+  } else if (!isLoggedIn!) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => CredentialPage()),
+    );
+  } else {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const HomescreenPage()),
+    );
+  }
+}
+
    bool _onTransition1=false;
    bool _onTransition2=false;
   @override
   void initState() {
     super.initState();
-<<<<<<< HEAD
-    Future.delayed(const Duration(milliseconds: 2000), () {
-=======
-    Future.delayed(const Duration(seconds: 2), () {
-     // ignore: use_build_context_synchronously
->>>>>>> c4de96aa7b25f11f2c9dffde450be0863d412618
-     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Walkthroughscreen()));// Change to your next route
-    });
-       Future.delayed(const Duration(milliseconds:500), () {
-    setState(() {
-      _onTransition1 = true;
-    });
-  });
-  Future.delayed(const Duration(milliseconds: 1500),(){
-
-    setState(() {
-      _onTransition2=true;
-
-    });
-  });
+  loadPrefsAndNavigate();
+   
   }
 
 

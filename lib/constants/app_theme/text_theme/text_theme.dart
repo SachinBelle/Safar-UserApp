@@ -13,7 +13,7 @@ const Color kNavbarButtonTextColour = Color(0xFF1D3557);
 
 class AppTextStyles {
   static final mainHeadline = GoogleFonts.poppins(
-    fontWeight: FontWeight.w500, 
+    fontWeight: FontWeight.w400, 
     fontSize: 20,
     color: kMainHeadlineColor,
   );
@@ -24,11 +24,14 @@ class AppTextStyles {
     color: kSubMainHeadlineColor,
   );
 
-  static final instructionText = GoogleFonts.poppins(
-    fontWeight: FontWeight.w400, 
-    fontSize: 14,
-    color: kInstructionTextColor,
-  );
+ static final instructionText = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  color: kInstructionTextColor,
+  letterSpacing: 0.14, // 1% of 14px = 0.14
+  height: 1.0,         // 100% line height
+);
+
 
   static final textFieldHeadline = GoogleFonts.poppins(
     fontWeight: FontWeight.w400, 

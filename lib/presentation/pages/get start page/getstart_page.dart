@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
-import 'package:safar/constants/app_theme/button_theme/main_button_theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safar/constants/app_theme/button_theme/responsive_button.dart';
 import 'package:safar/presentation/pages/home screen/homescreen_page.dart';
@@ -22,9 +21,9 @@ class _GetStartPageState extends State<GetStartPage> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please check the checkbox first, brooo!'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Center(child: Text('Accept terms and Conditions and Privacy Policy to Continue',style: AppTextStyles.instructionText,)),
+          duration: const Duration(seconds: 2),
         ),
       );
     }

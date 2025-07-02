@@ -43,7 +43,7 @@ ButtonStyle outlinedButtonStyle(BuildContext context) {
   return OutlinedButton.styleFrom(
     foregroundColor: kButtonColor, // Text color
     textStyle: AppTextStyles.outlinedButtonText,
-    side: const BorderSide(color: kButtonColor, width: 2),
+    side: const BorderSide(color: kButtonColor, width: 1),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     minimumSize: Size(buttonWidth, kDesignButtonHeight),
     maximumSize: Size(kDesignButtonWidth, kDesignButtonHeight),

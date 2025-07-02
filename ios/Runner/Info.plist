@@ -47,3 +47,15 @@
 	<true/>
 </dict>
 </plist>
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+		
+			<string>com.googleusercontent.apps.983201528322-8s9vbk7gfj52ogj4s6ldtaj8o68idufl</string>
+		</array>
+	</dict>
+</array>

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const Color kTextFieldBackground = Color(0xFFF5F6FA);
 const double kTextFieldBorderRadius = 8.0;
 
 InputDecoration baseTextFieldDecoration({String? hintText}) {
   return InputDecoration(
+    counterText: "",
     filled: true,
     fillColor: kTextFieldBackground,
     hintText: hintText,
@@ -19,13 +21,13 @@ InputDecoration baseTextFieldDecoration({String? hintText}) {
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(kTextFieldBorderRadius),
-      borderSide: BorderSide(
-        color: Color(0xFFE5CE3B), // Primary color for focus
-        width: 2,
-      ),
+      borderSide: BorderSide.none
     ),
-    hintStyle: const TextStyle(
-      color: Color(0xFFAEACAC), // Hint text color
+    hintStyle: GoogleFonts.poppins(
+      fontStyle: FontStyle.italic,
+      fontSize: 12,
+    
+      color: Color(0xff6c757d), // Hint text color
     ),
   );
 }
