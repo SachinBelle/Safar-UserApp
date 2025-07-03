@@ -21,7 +21,7 @@ class _SlideToConfirmButtonState extends State<SlideToConfirmButton> {
 
   static const double buttonWidth = 345;
   static const double buttonHeight = 60;
-  static const double circleDiameter = 50;
+  static const double circleDiameter = 60;
   static const double arrowSize = 30;
 
   void _onDragUpdate(DragUpdateDetails details) {
