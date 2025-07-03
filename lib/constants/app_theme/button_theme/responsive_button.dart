@@ -5,7 +5,7 @@ import 'package:safar/constants/app_theme/button_theme/main_button_theme.dart';
 
 class ResponsiveButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool outlined;
   final double? height;
 
@@ -34,7 +34,13 @@ class ResponsiveButton extends StatelessWidget {
           ? OutlinedButton(
               style: outlinedButtonStyle(context),
               onPressed: onPressed,
-              child: Text(text, style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500)),
+              child: Text(
+                text,
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             )
           : ElevatedButton(
               style: filledButtonStyle(context),

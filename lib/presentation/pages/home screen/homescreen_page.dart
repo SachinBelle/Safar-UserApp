@@ -4,6 +4,7 @@ import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
 import 'package:safar/constants/app_theme/colour_theme/colour_theme.dart';
 import 'package:safar/constants/nav_bar/nav_bar.dart';
 import 'package:safar/constants/app_theme/button_theme/responsive_button.dart';
+import 'package:safar/presentation/pages/bus routing page/page/busmapping_page.dart';
 
 class BusDriver {
   final String name;
@@ -227,36 +228,78 @@ class _HomescreenPageState extends State<HomescreenPage> {
                                                             size.width * 0.035,
                                                       ),
                                                 ),
-                                                const SizedBox(width: 8),
-                                                Icon(
-                                                  Icons.phone,
-                                                  color: isOffline
-                                                      ? Colors.orange
-                                                            .withOpacity(0.5)
-                                                      : const Color(
-                                                          0xFFF4A261,
-                                                        ).withOpacity(0.7),
-                                                  size: size.width * 0.06,
-                                                ),
                                               ],
                                             ),
                                             SizedBox(height: 4),
-                                            Text(
-                                              driver.isOnline
-                                                  ? driver.statusText
-                                                  : "Offline",
-                                              style: AppTextStyles
-                                                  .instructionText
-                                                  .copyWith(
-                                                    color: isOffline
-                                                        ? Colors.red
-                                                              .withOpacity(0.7)
-                                                        : Colors.green,
-                                                    fontSize:
-                                                        size.width * 0.035,
+                                            driver.isOnline
+                                                ? RichText(
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: "Online, ",
+                                                          style: AppTextStyles
+                                                              .instructionText
+                                                              .copyWith(
+                                                                color: Colors
+                                                                    .green,
+                                                                fontSize:
+                                                                    size.width *
+                                                                    0.035,
+                                                              ),
+                                                        ),
+                                                        TextSpan(
+                                                          text:
+                                                              "Last seen ${driver.lastSeen}",
+                                                          style: AppTextStyles
+                                                              .instructionText
+                                                              .copyWith(
+                                                                color: Colors
+                                                                    .blueGrey,
+                                                                fontSize:
+                                                                    size.width *
+                                                                    0.035,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                : Text(
+                                                    "Offline",
+                                                    style: AppTextStyles
+                                                        .instructionText
+                                                        .copyWith(
+                                                          color: Colors.red
+                                                              .withOpacity(0.7),
+                                                          fontSize:
+                                                              size.width *
+                                                              0.035,
+                                                        ),
                                                   ),
-                                            ),
                                           ],
+                                        ),
+                                      ),
+                                      // Phone icon at the right edge
+                                      CircleAvatar(
+                                        radius: size.width * 0.06,
+                                        backgroundColor: isOffline
+                                            ? const Color(
+                                                0xFFFF9800,
+                                              ).withOpacity(0.15)
+                                            : const Color(0xFFF4A261),
+                                        child: Icon(
+                                          Icons.phone_rounded,
+                                          color: isOffline
+                                              ? Colors.orange.withOpacity(0.5)
+                                              : const Color.fromARGB(
+                                                  255,
+                                                  255,
+                                                  255,
+                                                  255,
+                                                ),
+                                          size: size.width * 0.06,
                                         ),
                                       ),
                                     ],
@@ -288,8 +331,17 @@ class _HomescreenPageState extends State<HomescreenPage> {
                                   ResponsiveButton(
                                     text: "Track Bus",
                                     outlined: isOffline,
-                                    height: 31,
-                                    onPressed: driver.isOnline ? () {} : () {},
+                                    height: 44,
+                                    onPressed: driver.isOnline
+                                        ? () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const BusMappingPage(),
+                                              ),
+                                            );
+                                          }
+                                        : () {},
                                   ),
                                   if (isOffline)
                                     Padding(

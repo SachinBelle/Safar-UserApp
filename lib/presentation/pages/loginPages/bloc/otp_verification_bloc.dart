@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'otp_verification_event.dart';
@@ -10,6 +11,7 @@ class OtpVerificationBloc extends Bloc<OtpVerificationEvent, OtpVerificationStat
   OtpVerificationBloc() : super(OtpVerificationInitial());
 
   @override
+  // ignore: override_on_non_overriding_member
   Stream<OtpVerificationState> mapEventToState(
     OtpVerificationEvent event,
   ) async* {
