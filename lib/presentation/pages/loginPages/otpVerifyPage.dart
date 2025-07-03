@@ -145,6 +145,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
         return;
       }
       setSharedPrefs();
+
       final userId = user.id; // UUID from Supabase Auth
 
       // Check if user exists in user_data
@@ -203,7 +204,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
           ),
         );
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomescreenPage()));
-        // TODO: Navigate or update UI accordingly for existing user
+      
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

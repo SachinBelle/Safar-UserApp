@@ -5,19 +5,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 Future<AuthResponse?> googleSignIn(BuildContext context) async {
-  /// TODO: update the Web client ID with your own.
+
   try{
     final supabase=Supabase.instance.client;
-  /// Web Client ID that you registered with Google Cloud.
+
   const webClientId = '983201528322-u2bn8v1pb9839co7lqterji3k5o1fdjp.apps.googleusercontent.com';
 
-  /// TODO: update the iOS client ID with your own.
-  ///
-  /// iOS Client ID that you registered with Google Cloud.
   const iosClientId = '983201528322-8s9vbk7gfj52ogj4s6ldtaj8o68idufl.apps.googleusercontent.com';
 
-  // Google sign in on Android will work without providing the Android
-  // Client ID registered on Google Cloud.
 
   final GoogleSignIn googleSignIn = GoogleSignIn(
     clientId: iosClientId,

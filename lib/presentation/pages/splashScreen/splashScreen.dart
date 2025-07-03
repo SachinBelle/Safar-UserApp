@@ -16,22 +16,13 @@ class Splashscreen extends StatefulWidget {
 
 class _SplashscreenState extends State<Splashscreen> {
   // Add this flag
-  static const bool kDevSkipToHome = true; // Set to false for production
+ 
 
   bool? isWalkThroughVisted;
   bool? isLoggedIn;
 
   void loadPrefsAndNavigate() async {
-    if (kDevSkipToHome) {
-      // Directly navigate to home for development
-      await Future.delayed(const Duration(milliseconds: 500));
-      // ignore: use_build_context_synchronously
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomescreenPage()),
-      );
-      return;
-    }
-
+   
     final prefs = await SharedPreferences.getInstance();
     isWalkThroughVisted = prefs.getBool("walkThroughVisted") ?? false;
     isLoggedIn = prefs.getBool("isloggedIn") ?? false;

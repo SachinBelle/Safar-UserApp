@@ -39,31 +39,32 @@ class _HomescreenPageState extends State<HomescreenPage> {
   // Mock data for demonstration
   List<BusDriver> getBusDrivers() {
     // Return empty list to show "no bus" UI
-    // return [];
+    return [];
 
     // Return list with drivers to show cards
-    return [
-      BusDriver(
-        name: "Mr. Sanjay Kumar",
-        id: "Bus-112233",
-        busNo: "MH-31-1234",
-        busName: "National Institute of Technology, Suratkal.",
-        statusText: "Online, Last seen 1 min ago",
-        isOnline: true,
-        lastSeen: "1 min ago",
-        imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
-      ),
-      BusDriver(
-        name: "Mr. Kishor Rao",
-        id: "Bus-445566",
-        busNo: "MH-31-4321",
-        busName: "National Institute of Technology, Suratkal.",
-        statusText: "Offline",
-        isOnline: false,
-        lastSeen: "",
-        imageUrl: "https://randomuser.me/api/portraits/men/33.jpg",
-      ),
-    ];
+    // return [
+    //   BusDriver(
+    //     name: "Mr. Sanjay Kumar",
+    //     id: "Bus-112233",
+    //     busNo: "MH-31-1234",
+    //     busName: "National Institute of Technology, Suratkal.",
+    //     statusText: "Online, Last seen 1 min ago",
+    //     isOnline: true,
+    //     lastSeen: "1 min ago",
+    //     imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
+    //   ),
+    //   BusDriver(
+    //     name: "Mr. Kishor Rao",
+    //     id: "Bus-445566",
+    //     busNo: "MH-31-4321",
+    //     busName: "National Institute of Technology, Suratkal.",
+    //     statusText: "Offline",
+    //     isOnline: false,
+    //     lastSeen: "",
+    //     imageUrl: "https://randomuser.me/api/portraits/men/33.jpg",
+    //   ),
+    // ];
+    
   }
 
   @override
@@ -78,9 +79,10 @@ class _HomescreenPageState extends State<HomescreenPage> {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: size.width * 0.06,
-            vertical: size.height * 0.03,
+            vertical: size.height * 0.025,
           ),
           child: Column(
+            spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Top Row: Good Morning and Refresh
@@ -93,6 +95,7 @@ class _HomescreenPageState extends State<HomescreenPage> {
                     style: AppTextStyles.mainHeadline,
                   ),
                   Row(
+
                     children: [
                       Text(
                         'Refresh',
@@ -112,15 +115,19 @@ class _HomescreenPageState extends State<HomescreenPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              // const SizedBox(height: 16),
               Text(
-                "Here's an update on your bus/van.",
-                style: AppTextStyles.instructionText,
+                "Here’s an update on your bus.",
+                style: AppTextStyles.instructionText.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.normal,
+                ),
+                
               ),
-              SizedBox(height: size.height * 0.04),
+              // SizedBox(height: size.height * 0.02),
               // Choose Bus
               Text(
-                'Choose Bus',
+                'Select Bus to track',
                 style: AppTextStyles.mainHeadline.copyWith(
                   color: const Color(0xFF2C2C2C),
                 ),
@@ -132,6 +139,8 @@ class _HomescreenPageState extends State<HomescreenPage> {
                     ? Center(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
                               'assets/home_screen_img.svg',
@@ -140,10 +149,10 @@ class _HomescreenPageState extends State<HomescreenPage> {
                             ),
                             SizedBox(height: size.height * 0.02),
                             Text(
-                              'No bus/van to track.',
+                              'No bus is currently associated with your account.',
                               style: AppTextStyles.instructionText.copyWith(
                                 color: const Color(0xFF6C757D),
-                                fontSize: size.width * 0.04,
+                                fontSize: size.width * 0.02,
                               ),
                             ),
                           ],
