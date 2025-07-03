@@ -48,6 +48,11 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
       }
     });
   }
+   void setSharedPrefs()async{
+      final prefs=await SharedPreferences.getInstance();
+      prefs.setBool("isloggedIn", true);
+
+     }
 
   // Override from CodeAutoFill mixin to receive the SMS code automatically
   @override
@@ -139,6 +144,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
         );
         return;
       }
+      setSharedPrefs();
       final userId = user.id; // UUID from Supabase Auth
 
       // Check if user exists in user_data
@@ -147,6 +153,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
           .select('user_linked_uid')
           .eq('user_uid', userId)
           .maybeSingle();
+
 
       if (existingUser == null) {
         // New user → insert into user_data
