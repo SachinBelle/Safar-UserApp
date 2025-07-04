@@ -5,7 +5,7 @@ const Color kPrimaryColor = Color(0xFFFDFCFB); // Main brand color
 const Color kPrimaryLight = Color(0xFFFDFCFB);
 const Color kPrimaryDark = Color(0xFFFDFCFB);
 // Accent/Secondary
-const Color kAccentColor = Color(0xFF4F8FF5);
+const Color kAccentColor = Color(0xFFF4A261);
 // Backgrounds
 const Color kBackgroundColor = Color(0xFFFDFCFB);
 const Color kCardColor = Color(0xFFF5F5F5);

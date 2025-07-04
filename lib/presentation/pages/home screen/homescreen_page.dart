@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
 import 'package:safar/constants/app_theme/colour_theme/colour_theme.dart';
+// ignore: unused_import
 import 'package:safar/constants/nav_bar/nav_bar.dart';
 import 'package:safar/constants/app_theme/button_theme/responsive_button.dart';
 import 'package:safar/presentation/pages/bus routing page/page/busmapping_page.dart';
@@ -64,7 +65,6 @@ class _HomescreenPageState extends State<HomescreenPage> {
     //     imageUrl: "https://randomuser.me/api/portraits/men/33.jpg",
     //   ),
     // ];
-    
   }
 
   @override
@@ -74,7 +74,7 @@ class _HomescreenPageState extends State<HomescreenPage> {
 
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      bottomNavigationBar: const CustomNavBar(initialIndex: 1),
+      // bottomNavigationBar: const CustomNavBar(selectedIndex: 1),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -95,7 +95,6 @@ class _HomescreenPageState extends State<HomescreenPage> {
                     style: AppTextStyles.mainHeadline,
                   ),
                   Row(
-
                     children: [
                       Text(
                         'Refresh',
@@ -122,7 +121,6 @@ class _HomescreenPageState extends State<HomescreenPage> {
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
                 ),
-                
               ),
               // SizedBox(height: size.height * 0.02),
               // Choose Bus
@@ -170,11 +168,13 @@ class _HomescreenPageState extends State<HomescreenPage> {
                             padding: EdgeInsets.all(size.width * 0.04),
                             decoration: BoxDecoration(
                               color: isOffline
+                                  // ignore: deprecated_member_use
                                   ? Colors.white.withOpacity(0.85)
                                   : const Color(0xFFF5F6FA),
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
                                 color: isOffline
+                                    // ignore: deprecated_member_use
                                     ? Colors.white.withOpacity(0.85)
                                     : const Color(0xFFF5F6FA),
                               ),
@@ -225,6 +225,7 @@ class _HomescreenPageState extends State<HomescreenPage> {
                                                       .copyWith(
                                                         color: isOffline
                                                             ? Colors.red
+                                                                  // ignore: deprecated_member_use
                                                                   .withOpacity(
                                                                     0.7,
                                                                   )
@@ -281,6 +282,7 @@ class _HomescreenPageState extends State<HomescreenPage> {
                                                         .instructionText
                                                         .copyWith(
                                                           color: Colors.red
+                                                              // ignore: deprecated_member_use
                                                               .withOpacity(0.7),
                                                           fontSize:
                                                               size.width *
@@ -296,11 +298,13 @@ class _HomescreenPageState extends State<HomescreenPage> {
                                         backgroundColor: isOffline
                                             ? const Color(
                                                 0xFFFF9800,
+                                              // ignore: deprecated_member_use
                                               ).withOpacity(0.15)
                                             : const Color(0xFFF4A261),
                                         child: Icon(
                                           Icons.phone_rounded,
                                           color: isOffline
+                                              // ignore: deprecated_member_use
                                               ? Colors.orange.withOpacity(0.5)
                                               : const Color.fromARGB(
                                                   255,

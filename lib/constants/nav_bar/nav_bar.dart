@@ -1,38 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
+import 'package:safar/presentation/pages/notification_page.dart';
+import 'package:safar/presentation/pages/profile_page.dart';
+import 'package:safar/presentation/pages/home screen/homescreen_page.dart';
 
-class CustomNavBar extends StatefulWidget {
-  final int initialIndex;
+class CustomNavBar extends StatelessWidget {
+  final int selectedIndex;
   final ValueChanged<int>? onTap;
 
-  const CustomNavBar({super.key, this.initialIndex = 1, this.onTap});
-
-  @override
-  State<CustomNavBar> createState() => _CustomNavBarState();
-}
-
-class _CustomNavBarState extends State<CustomNavBar> {
-  int _selectedIndex = 1;
+  const CustomNavBar({Key? key, required this.selectedIndex, this.onTap})
+    : super(key: key);
 
   static const double navBarHeight = 80;
   static const Color backgroundColor = Color(0xFFF5F6FA);
   static const Color selectedColor = Color(0xFFF4A261);
   static const Color defaultColor = Color(0xFF1D3557);
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedIndex = widget.initialIndex;
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    if (widget.onTap != null) {
-      widget.onTap!(index);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +58,10 @@ class _CustomNavBarState extends State<CustomNavBar> {
     required int index,
     required double width,
   }) {
-    final bool isSelected = _selectedIndex == index;
+    final bool isSelected = selectedIndex == index;
     final Color itemColor = isSelected ? selectedColor : defaultColor;
     return GestureDetector(
-      onTap: () => _onItemTapped(index),
+      onTap: () => onTap?.call(index),
       child: SizedBox(
         width: width,
         child: Column(
@@ -94,6 +76,40 @@ class _CustomNavBarState extends State<CustomNavBar> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NavBarDemoPage extends StatefulWidget {
+  const NavBarDemoPage({Key? key}) : super(key: key);
+
+  @override
+  State<NavBarDemoPage> createState() => _NavBarDemoPageState();
+}
+
+class _NavBarDemoPageState extends State<NavBarDemoPage> {
+  int _selectedIndex = 1;
+
+  static final List<Widget> _pages = <Widget>[
+    NotificationPage(),
+    HomescreenPage(),
+    ProfilePage(),
+  ];
+
+  void _onNavBarTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: CustomNavBar(
+        selectedIndex: _selectedIndex,
+        onTap: _onNavBarTap,
       ),
     );
   }

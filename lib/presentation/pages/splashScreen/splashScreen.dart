@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:safar/presentation/pages/home%20screen/homescreen_page.dart';
+import 'package:safar/presentation/pages/home screen/homescreen_page.dart';
 import 'package:safar/presentation/pages/loginPages/CredentialPage.dart';
 import 'package:safar/presentation/pages/walkthroughScreens/WalkThroughScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,13 +16,11 @@ class Splashscreen extends StatefulWidget {
 
 class _SplashscreenState extends State<Splashscreen> {
   // Add this flag
- 
 
   bool? isWalkThroughVisted;
   bool? isLoggedIn;
 
   void loadPrefsAndNavigate() async {
-   
     final prefs = await SharedPreferences.getInstance();
     isWalkThroughVisted = prefs.getBool("walkThroughVisted") ?? false;
     isLoggedIn = prefs.getBool("isloggedIn") ?? false;

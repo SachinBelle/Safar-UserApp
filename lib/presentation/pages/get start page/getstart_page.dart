@@ -22,7 +22,12 @@ class _GetStartPageState extends State<GetStartPage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Center(child: Text('Accept terms and Conditions and Privacy Policy to Continue',style: AppTextStyles.instructionText,)),
+          content: Center(
+            child: Text(
+              'Accept terms and Conditions and Privacy Policy to Continue',
+              style: AppTextStyles.instructionText,
+            ),
+          ),
           duration: const Duration(seconds: 2),
         ),
       );

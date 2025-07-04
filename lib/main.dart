@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safar/constants/nav_bar/nav_bar.dart';
+// ignore: unused_import
 import 'package:safar/presentation/pages/splashScreen/splashScreen.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/':(context)=>Splashscreen(),
+        '/':(context)=>NavBarDemoPage(),
      
       
       },

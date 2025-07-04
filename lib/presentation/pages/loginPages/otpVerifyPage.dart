@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:safar/constants/app_theme/text_theme/text_theme.dart';
 import 'package:safar/presentation/pages/get%20start%20page/getstart_page.dart';
-import 'package:safar/presentation/pages/home%20screen/homescreen_page.dart';
+import 'package:safar/presentation/pages/home screen/homescreen_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -24,7 +24,8 @@ class OtpVerificationPage extends StatefulWidget {
   State<OtpVerificationPage> createState() => _OtpVerificationPageState();
 }
 
-class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAutoFill {
+class _OtpVerificationPageState extends State<OtpVerificationPage>
+    with CodeAutoFill {
   final ValueNotifier<int> _resendTimerNotifier = ValueNotifier<int>(60);
   bool _isResendEnabled = false;
   final TextEditingController inputOtp = TextEditingController();
@@ -48,11 +49,11 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
       }
     });
   }
-   void setSharedPrefs()async{
-      final prefs=await SharedPreferences.getInstance();
-      prefs.setBool("isloggedIn", true);
 
-     }
+  void setSharedPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool("isloggedIn", true);
+  }
 
   // Override from CodeAutoFill mixin to receive the SMS code automatically
   @override
@@ -72,13 +73,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
         channel: OtpChannel.sms,
       );
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Center(
-            child: Text(
-              "OTP Sent Successfully!",
-            ),
-          ),
-        ),
+        const SnackBar(content: Center(child: Text("OTP Sent Successfully!"))),
       );
 
       _startResendTimer();
@@ -155,7 +150,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
           .eq('user_uid', userId)
           .maybeSingle();
 
-
       if (existingUser == null) {
         // New user → insert into user_data
         await supabase.from('user_data').insert({
@@ -203,8 +197,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
             backgroundColor: Colors.white,
           ),
         );
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomescreenPage()));
-      
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (context) => const HomescreenPage()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -274,24 +269,26 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> with CodeAuto
             Text("Verify OTP", style: AppTextStyles.mainHeadline),
             const SizedBox(height: 10),
             Text.rich(
-              TextSpan(children: [
-                TextSpan(
-                  text: "We’ve sent a 6-digit code to ",
-                  style: AppTextStyles.instructionText,
-                ),
-                TextSpan(
-                  text: "${widget.countryCode} ${widget.mobileNumber} ",
-                  style: GoogleFonts.poppins(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: "We've sent a 6-digit code to ",
+                    style: AppTextStyles.instructionText,
                   ),
-                ),
-                TextSpan(
-                  text: "\nPlease enter it below.",
-                  style: AppTextStyles.instructionText,
-                ),
-              ]),
+                  TextSpan(
+                    text: "${widget.countryCode} ${widget.mobileNumber} ",
+                    style: GoogleFonts.poppins(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "\nPlease enter it below.",
+                    style: AppTextStyles.instructionText,
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 15),
             Center(
